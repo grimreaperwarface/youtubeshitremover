@@ -1,4 +1,4 @@
-#Youtube Shit Remover
+# Youtube Shit Remover
 
 Script removing unwanted content from Youtube hosting.
 

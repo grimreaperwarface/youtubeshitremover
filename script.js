@@ -90,7 +90,7 @@ function removeShitEx() {
         if (i == 1)    
             $(this).hide();
     });
-    $('.related-channels-sidebar-container').hide();
+    $('.related-channels-editor').hide();
     $('.branded-page-related-channels').hide();
     $('.ytp-videowall-still.ytp-suggestion-set').hide();
 }

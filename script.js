@@ -58,8 +58,7 @@
         'InfantryMovie Damir',
         'Griffin Channel',
         'Юрий Хованский',
-        'Magister Yoda',
-        'Armag Play'
+        'Magister Yoda'
     ];
     
     function in_array(needle, haystack, strict) {

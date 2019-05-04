@@ -5,7 +5,12 @@
         'лшпт',
         'что стало',
         'школоник',
-        'капитан паника'
+        'капитан паника',
+        'Aspid',
+        'капитанпаника',
+        'приколы',
+        'puchkov',
+        'пучков'
     ];
     var badValuesSize = badValues.length;
 
@@ -13,25 +18,34 @@
         badValues[j] = badValues[j].toLowerCase();
     }
 
-    function removebadValues () {    
-        let el = document.getElementsByClassName('yt-simple-endpoint');
+    function removeBadValues (className, parentClasses) {
+        let el = document.getElementsByClassName(className);
         let elSize = el.length;   
         for (let i = 0; i < elSize; i++) {
             if (typeof (el[i]) == 'undefined')
                 continue;
-            let title = el[i]['title'];
+            let title = el[i]['title'] || $(el[i]).text();
             title = title.trim().toLowerCase();
             if (title.length > 0)
                 for (let j = 0; j < badValuesSize; j++) {              
                     if (title.indexOf(badValues[j]) >= 0) {
-                        $(el[i]).parents('.ytd-grid-renderer').remove();
-                        $(el[i]).parents('.style-scope.ytd-shelf-renderer').remove();                    
+                        let s = [];
+                        for (let k = 0; k < parentClasses.length; k++) {
+                            $(el[i]).parents(parentClasses[k]).remove();
+                        }
                         console.log('shit removed: ' + title);
                     }
                 }
         }
     }
-    removebadValues();
+    
+    function removeShit() {
+        removeBadValues('yt-simple-endpoint', ['.ytd-grid-renderer, .style-scope.ytd-shelf-renderer']);
+        removeBadValues('ytd-compact-video-renderer', ['.ytd-compact-video-renderer']);
+        removeBadValues('ytd-video-meta-block', ['.ytd-compact-video-renderer']);
+        removeBadValues('yt-simple-endpoint', ['.style-scope.ytd-grid-renderer']);
+    }
     console.log('shit remover inited');
-    setInterval(removebadValues, 3000);
+    removeShit();    
+    setInterval(removeShit, 3000);
 })();

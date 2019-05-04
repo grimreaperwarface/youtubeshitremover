@@ -15,8 +15,8 @@
 
     function removebadValues () {    
         let el = document.getElementsByClassName('yt-simple-endpoint');
-        let elsize = el.length;   
-        for (let i = 0; i < elsize; i++) {
+        let elSize = el.length;   
+        for (let i = 0; i < elSize; i++) {
             if (typeof (el[i]) == 'undefined')
                 continue;
             let title = el[i]['title'];
